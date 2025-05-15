@@ -1,0 +1,12 @@
+include "common.fbs";
+
+namespace HJProtocol;
+
+table Telecommand {
+  cmd_mode:          OperationMode;  // 모드 변경 명령
+  cmd_config:        string;         // 설정파일
+  cmd_nav:           bool;           // 항법 명령
+}
+
+root_type Telecommand;
+file_identifier "HJTC";

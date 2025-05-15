@@ -1,0 +1,65 @@
+include "common.fbs";
+
+namespace HJProtocol;
+
+table State {
+  boot_time:  ulong;
+  mode_time:  ulong;
+  mode:       OperationMode;
+  countdown:  int32;
+  warn_code:  uint32;
+  error_code: uint32;
+  voltage:    float;
+  current:    float;
+}
+
+table NAV {
+  nav_status: NavStatus;
+  nav_roll:   float;
+  nav_pitch:  float;
+  nav_yaw:    float;
+  nav_lat:    double;
+  nav_lon:    double;
+  nav_alt:    float;
+  nav_qua0:   float;
+  nav_qua1:   float;
+  nav_qua2:   float;
+  nav_qua3:   float;
+}
+
+table IMU {
+  accx: float;
+  accy: float;
+  accz: float;
+  gyrx: float;
+  gyry: float;
+  gyrz: float;
+}
+
+table GPS {
+  lat:        double;
+  lon:        double;
+  alt:        float;
+  sat:        uint8;
+  fix_status: uint8;
+  fix_type:   uint8;
+  time:       ulong;
+}
+
+table Telemetry {
+  state: State;
+  nav:   NAV;
+  imu:   IMU;
+  gps:   GPS;
+
+  sv:     [uint8];    // 8개
+  pt:     [float];    // 12개
+  pt_raw: [uint16];
+  tc:     [float];    // 10개
+  tc_raw: [uint16];
+
+  config : string;
+}
+
+root_type Telemetry;
+file_identifier "HJTM";

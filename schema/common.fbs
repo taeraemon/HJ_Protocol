@@ -1,0 +1,35 @@
+namespace HJProtocol;
+
+/// 운용 모드 (Operation Mode)
+enum OperationMode : byte {
+  UNKNOWN  = 0,
+  INIT     = 1,
+  IDLE     = 2,
+  DIAG     = 3,
+  ARMED    = 4,
+  FLIGHT   = 5,
+  KILL     = 6,
+  RECOVERY = 7
+}
+
+/// 항법 정렬 상태 (Navigation Status)
+enum NavStatus : byte {
+  UNKNOWN      = 0,
+  UNALIGNED    = 1,
+  COARSE_ALIGN = 2,
+  FINE_ALIGN   = 3,
+  ALIGNED      = 4
+}
+
+/// 고정 배열 크기 정의 (enum 분리 방식)
+enum MaxSv : ushort {
+  LEN = 8
+}
+
+enum MaxPt : ushort {
+  LEN = 12
+}
+
+enum MaxTc : ushort {
+  LEN = 10
+}
